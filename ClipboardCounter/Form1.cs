@@ -19,6 +19,9 @@ namespace ClipboardCounter
             clipboardListener.Subscribe(this.Handle);
             //textProcessor.SetNotificationTool(FireBalloonTip);
             fireNotificationsToolStripMenuItem.Checked = fireNotifications;
+            fireNotificationsToolStripMenuItem1.Checked = fireNotifications;
+            alwaysOnTopToolStripMenuItem.Checked = alwaysOnTop;
+            alwaysOnTopToolStripMenuItem1.Checked = alwaysOnTop;
             this.TopMost = alwaysOnTop;
         }
 
@@ -26,17 +29,6 @@ namespace ClipboardCounter
         {
             this.Show();
             this.WindowState = FormWindowState.Normal;
-        }
-
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void FireNotificationsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            fireNotifications = !fireNotifications;
-            fireNotificationsToolStripMenuItem.Checked = fireNotifications;
         }
 
         private void Form1_Move(object sender, EventArgs e)
@@ -92,10 +84,56 @@ namespace ClipboardCounter
             }
         }
 
+        private void FireNotificationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToggleFireNotifications();
+        }
+
+        private void FireNotificationsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ToggleFireNotifications();
+        }
+
+        private void ToggleFireNotifications()
+        {
+            fireNotifications = !fireNotifications;
+            fireNotificationsToolStripMenuItem.Checked = fireNotifications;
+            fireNotificationsToolStripMenuItem1.Checked = fireNotifications;
+        }
+
         private void AlwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToggleAlwaysOnTop();
+        }
+
+        private void AlwaysOnTopToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ToggleAlwaysOnTop();
+        }
+
+        private void ToggleAlwaysOnTop()
         {
             alwaysOnTop = !alwaysOnTop;
             this.TopMost = alwaysOnTop;
+            alwaysOnTopToolStripMenuItem.Checked = alwaysOnTop;
+            alwaysOnTopToolStripMenuItem1.Checked = alwaysOnTop;
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+        private void ExitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void AboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var aboutForm = new AboutForm();
+            aboutForm.Show();
         }
     }
 }
