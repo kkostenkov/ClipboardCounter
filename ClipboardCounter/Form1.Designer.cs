@@ -37,6 +37,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.charsCountLabel = new System.Windows.Forms.Label();
             this.fireNotificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,11 +54,12 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alwaysOnTopToolStripMenuItem,
             this.fireNotificationsToolStripMenuItem,
             this.showToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
             // 
             // showToolStripMenuItem
             // 
@@ -100,6 +102,15 @@
             this.fireNotificationsToolStripMenuItem.Text = "Fire notifications";
             this.fireNotificationsToolStripMenuItem.Click += new System.EventHandler(this.FireNotificationsToolStripMenuItem_Click);
             // 
+            // alwaysOnTopToolStripMenuItem
+            // 
+            this.alwaysOnTopToolStripMenuItem.Checked = true;
+            this.alwaysOnTopToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
+            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alwaysOnTopToolStripMenuItem.Text = "Always on top";
+            this.alwaysOnTopToolStripMenuItem.Click += new System.EventHandler(this.AlwaysOnTopToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +139,7 @@
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Label charsCountLabel;
         private System.Windows.Forms.ToolStripMenuItem fireNotificationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alwaysOnTopToolStripMenuItem;
     }
 }
 

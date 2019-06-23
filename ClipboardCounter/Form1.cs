@@ -10,6 +10,7 @@ namespace ClipboardCounter
         private TextProcessor textProcessor = new TextProcessor();
 
         private bool fireNotifications = true;
+        private bool alwaysOnTop = true;
 
         public Form1()
         {
@@ -18,6 +19,7 @@ namespace ClipboardCounter
             clipboardListener.Subscribe(this.Handle);
             //textProcessor.SetNotificationTool(FireBalloonTip);
             fireNotificationsToolStripMenuItem.Checked = fireNotifications;
+            this.TopMost = alwaysOnTop;
         }
 
         private void ShowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,5 +92,10 @@ namespace ClipboardCounter
             }
         }
 
+        private void AlwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            alwaysOnTop = !alwaysOnTop;
+            this.TopMost = alwaysOnTop;
+        }
     }
 }
