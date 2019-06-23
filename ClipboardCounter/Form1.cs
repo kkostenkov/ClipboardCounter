@@ -42,7 +42,6 @@ namespace ClipboardCounter
             if (this.WindowState == FormWindowState.Minimized)
             {
                 this.Hide();
-                FireBalloonTip("hidden");
             }
         }
 
