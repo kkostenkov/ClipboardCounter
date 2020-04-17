@@ -8,6 +8,7 @@ namespace ClipboardCounter
     {
         private ClipboardListener clipboardListener = new ClipboardListener();
         private TextProcessor textProcessor = new TextProcessor();
+        private TextTranslator translator = new TextTranslator();
 
         private bool fireNotifications = true;
         private bool alwaysOnTop = true;
@@ -75,14 +76,31 @@ namespace ClipboardCounter
         private void ProcessText(string text)
         {
             clipboardMirror.Text = text;
+            string output;
+            //output = CountChars(text);
+            output = Translate(text);
+            if (fireNotifications)
+            {
+                FireBalloonTip(output);
+            }
+        }
+
+        private string Translate(string text)
+        {
+            //var translation = translator.Fetch(text);
+            var translation = "Some translation";
+            charsCountLabel.Text = text;
+            return translation;
+        }
+
+        private string CountChars(string text)
+        {
             var charCount = textProcessor.CountChars(text);
             var stringCharCount = charCount.ToString();
             charsCountLabel.Text = $"Chars count: {stringCharCount}";
-            if (fireNotifications)
-            {
-                FireBalloonTip(stringCharCount);
-            }
+            return stringCharCount;
         }
+        
 
         private void FireNotificationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
