@@ -24,6 +24,7 @@ namespace ClipboardCounter
             alwaysOnTopToolStripMenuItem.Checked = alwaysOnTop;
             alwaysOnTopToolStripMenuItem1.Checked = alwaysOnTop;
             this.TopMost = alwaysOnTop;
+            SetMode(Program.Mode);
         }
 
         private void ShowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,8 +78,20 @@ namespace ClipboardCounter
         {
             clipboardMirror.Text = text;
             string output;
-            //output = CountChars(text);
-            output = Translate(text);
+            switch ( Program.Mode)
+            {
+                case Mode.Translator:
+                {
+                    output = Translate(text);
+                    break;
+                }
+                default:
+                {
+                    output = CountChars(text);
+                    break;
+                }       
+            }
+            
             if (fireNotifications)
             {
                 FireBalloonTip(output);
@@ -152,6 +165,42 @@ namespace ClipboardCounter
         {
             var aboutForm = new AboutForm();
             aboutForm.Show();
+        }
+
+        private void countToggle_Click(object sender, EventArgs e)
+        {
+            SetMode(Mode.Default);
+        }
+
+        private void translateToggle_Click(object sender, EventArgs e)
+        {
+            SetMode(Mode.Translator);
+        }
+
+        private void SetMode(Mode newMode)
+        {
+            ResetToggles();
+            switch (newMode)
+            {
+                case Mode.Translator:
+                {
+                    translateModeToggle.Checked = true;
+                    break;
+                }
+                case Mode.Default:
+                default:
+                {
+                    countModeToggle.Checked = true;
+                    break;
+                }       
+            }
+            Program.Mode = newMode;
+        }
+        
+        private void ResetToggles()
+        {
+            countModeToggle.Checked = false;
+            translateModeToggle.Checked = false;
         }
     }
 }

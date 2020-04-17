@@ -18,5 +18,7 @@ namespace ClipboardCounter
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+
+        public static Mode Mode;
     }
 }
