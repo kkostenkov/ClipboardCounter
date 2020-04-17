@@ -100,9 +100,8 @@ namespace ClipboardCounter
 
         private string Translate(string text)
         {
-            //var translation = translator.Fetch(text);
-            var translation = "Some translation";
-            charsCountLabel.Text = text;
+            var translation = translator.Fetch(text);
+            charsCountLabel.Text = translation;
             return translation;
         }
 
