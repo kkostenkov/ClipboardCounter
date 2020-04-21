@@ -11,7 +11,7 @@ namespace ClipboardCounter
     /// Yandex translate docs
     /// https://yandex.ru/dev/translate/doc/dg/reference/translate-docpage/
     /// </summary>
-    public class TextTranslator
+    public class TextTranslator : ITranslator
     {
         private class Response
         {
@@ -20,8 +20,7 @@ namespace ClipboardCounter
             public List<string> text;
         }
         
-        private const string YA_TRANSLATE_KEY = 
-            "trnsl.1.1.20200417T193608Z.e558a4f693138226.36639068feda928e772c02ac89b0faf607db2ed2";
+        private string api_key => Program.Settings.YandexKey;
         private const string YA_TRANSLATE_ENDPOINT = "https://translate.yandex.net/api/v1.5/tr.json/translate";
 
         private readonly Dictionary<int, string> responseCodes = new Dictionary<int, string>()
@@ -34,8 +33,10 @@ namespace ClipboardCounter
             {422, "Can't translate this text"},
             {501, "Translation direction is unsupported"},
         };
-        
-        private string translationDirection = "de-ru";
+
+        private Settings settings => Program.Settings;
+        private string translationDirection => ($"{settings.SourceLanguageCode}-{settings.TargetLanguageCode}");
+
 
         public string Fetch(string text)
         {
@@ -47,7 +48,7 @@ namespace ClipboardCounter
         private string RequestTranslation(string text)
         {
             var escapedText = Uri.EscapeUriString(text);
-            var request = $"{YA_TRANSLATE_ENDPOINT}?key={YA_TRANSLATE_KEY}&text={escapedText}&lang={translationDirection}";
+            var request = $"{YA_TRANSLATE_ENDPOINT}?key={api_key}&text={escapedText}&lang={translationDirection}";
             string responseString;
             using (var client = new WebClient())
             {

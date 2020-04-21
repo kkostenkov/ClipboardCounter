@@ -4,5 +4,6 @@ namespace ClipboardCounter
     {
         Default = 0,
         Translator,
+        CloudTranslator
     }
 }

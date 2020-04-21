@@ -10,9 +10,16 @@ namespace ClipboardCounter
     {
         [JsonProperty]
         public Mode Mode;
-        
         [JsonProperty]
-        public string YandexKey = string.Empty;
+        public string SourceLanguageCode = "de";
+        [JsonProperty]
+        public string TargetLanguageCode = "en";
+        [JsonProperty]
+        public string YandexKey;
+        [JsonProperty]
+        public string YandexCloudApiKey;
+
+
 
         private const string CONFIG_NAME = "config.json";
         private const string LOG_NAME = "errors.log";
@@ -64,11 +71,7 @@ namespace ClipboardCounter
         public void DumpToFile()
         {
             var dump = JsonConvert.SerializeObject(this, Formatting.Indented);
-            using (var writer = File.AppendText(ConfigPath))
-            {
-                writer.WriteLine(dump);
-                writer.Flush();
-            }
+            File.WriteAllText(ConfigPath, dump);
         }
 
         public static void WriteLog(string entry)

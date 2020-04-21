@@ -8,6 +8,7 @@ namespace ClipboardCounter
         private ClipboardListener clipboardListener = new ClipboardListener();
         private TextProcessor textProcessor = new TextProcessor();
         private TextTranslator translator = new TextTranslator();
+        private YaCloudTranslator cloudTranslator = new YaCloudTranslator();
 
         private bool fireNotifications = true;
         private bool alwaysOnTop = true;
@@ -86,6 +87,7 @@ namespace ClipboardCounter
             switch ( settings.Mode)
             {
                 case Mode.Translator:
+                case Mode.CloudTranslator:
                 {
                     output = Translate(text);
                     break;
@@ -105,7 +107,10 @@ namespace ClipboardCounter
 
         private string Translate(string text)
         {
-            var translation = translator.Fetch(text);
+            ITranslator translationTool = (settings.Mode == Mode.Translator) 
+                ? (ITranslator)translator 
+                : cloudTranslator;
+            var translation = translationTool.Fetch(text);
             charsCountLabel.Text = translation;
             return translation;
         }
@@ -180,6 +185,11 @@ namespace ClipboardCounter
         {
             SetMode(Mode.Translator);
         }
+        
+        private void cloudTranslateToggle_Click(object sender, EventArgs e)
+        {
+            SetMode(Mode.CloudTranslator);
+        }
 
         private void SetMode(Mode newMode)
         {
@@ -191,6 +201,9 @@ namespace ClipboardCounter
                     translateModeToggle.Checked = true;
                     break;
                 }
+                case Mode.CloudTranslator:
+                    cloudTranslateModeToggle.Checked = true;
+                    break;
                 case Mode.Default:
                 default:
                 {
@@ -205,9 +218,10 @@ namespace ClipboardCounter
         {
             countModeToggle.Checked = false;
             translateModeToggle.Checked = false;
+            cloudTranslateModeToggle.Checked = false;
         }
 
-        private void RestoreConfig_Click(object sender, EventArgs e)
+        private void WriteConfig_Click(object sender, EventArgs e)
         {
             settings.DumpToFile();
         }

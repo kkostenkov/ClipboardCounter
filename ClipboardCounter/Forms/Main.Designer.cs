@@ -48,9 +48,10 @@
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.countModeToggle = new System.Windows.Forms.ToolStripMenuItem();
             this.translateModeToggle = new System.Windows.Forms.ToolStripMenuItem();
+            this.writeConfigFile_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.restoreConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cloudTranslateModeToggle = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -151,7 +152,7 @@
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.ExitToolStripMenuItem1_Click);
             // 
@@ -160,7 +161,7 @@
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
             {
                 this.alwaysOnTopToolStripMenuItem1, this.fireNotificationsToolStripMenuItem1,
-                this.modeToolStripMenuItem, this.restoreConfigToolStripMenuItem
+                this.modeToolStripMenuItem, this.writeConfigFile_MenuItem
             });
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -189,7 +190,7 @@
             // modeToolStripMenuItem
             // 
             this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
-                {this.countModeToggle, this.translateModeToggle});
+                {this.countModeToggle, this.translateModeToggle, this.cloudTranslateModeToggle});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
             this.modeToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.modeToolStripMenuItem.Text = "Mode";
@@ -208,6 +209,13 @@
             this.translateModeToggle.Text = "Translate";
             this.translateModeToggle.Click += new System.EventHandler(this.translateToggle_Click);
             // 
+            // writeConfigFile_MenuItem
+            // 
+            this.writeConfigFile_MenuItem.Name = "writeConfigFile_MenuItem";
+            this.writeConfigFile_MenuItem.Size = new System.Drawing.Size(162, 22);
+            this.writeConfigFile_MenuItem.Text = "Write Config File";
+            this.writeConfigFile_MenuItem.Click += new System.EventHandler(this.WriteConfig_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
@@ -223,12 +231,12 @@
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.AboutToolStripMenuItem1_Click);
             // 
-            // restoreConfigToolStripMenuItem
+            // cloudTranslateModeToggle
             // 
-            this.restoreConfigToolStripMenuItem.Name = "restoreConfigToolStripMenuItem";
-            this.restoreConfigToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.restoreConfigToolStripMenuItem.Text = "Restore Config";
-            this.restoreConfigToolStripMenuItem.Click += new System.EventHandler(this.RestoreConfig_Click);
+            this.cloudTranslateModeToggle.Name = "cloudTranslateModeToggle";
+            this.cloudTranslateModeToggle.Size = new System.Drawing.Size(152, 22);
+            this.cloudTranslateModeToggle.Text = "CloudTranslate";
+            this.cloudTranslateModeToggle.Click += new System.EventHandler(this.cloudTranslateToggle_Click);
             // 
             // Form1
             // 
@@ -273,7 +281,8 @@
         private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem countModeToggle;
         private System.Windows.Forms.ToolStripMenuItem translateModeToggle;
-        private System.Windows.Forms.ToolStripMenuItem restoreConfigToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cloudTranslateModeToggle;
+        private System.Windows.Forms.ToolStripMenuItem writeConfigFile_MenuItem;
     }
 }
 

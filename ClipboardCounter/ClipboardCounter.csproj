@@ -62,7 +62,9 @@
     <Compile Include="Code\Mode.cs" />
     <Compile Include="Code\Settings\Settings.cs" />
     <Compile Include="Code\TextProcessor.cs" />
-    <Compile Include="Code\TextTranslator.cs" />
+    <Compile Include="Code\Translation\ITranslator.cs" />
+    <Compile Include="Code\Translation\TextTranslator.cs" />
+    <Compile Include="Code\Translation\YaCloudTranslator.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
