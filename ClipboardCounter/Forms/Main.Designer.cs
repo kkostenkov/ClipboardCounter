@@ -45,11 +45,12 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alwaysOnTopToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fireNotificationsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.countModeToggle = new System.Windows.Forms.ToolStripMenuItem();
             this.translateModeToggle = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -158,7 +159,8 @@
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
             {
-                this.alwaysOnTopToolStripMenuItem1, this.fireNotificationsToolStripMenuItem1, this.modeToolStripMenuItem
+                this.alwaysOnTopToolStripMenuItem1, this.fireNotificationsToolStripMenuItem1,
+                this.modeToolStripMenuItem, this.restoreConfigToolStripMenuItem
             });
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -184,21 +186,6 @@
             this.fireNotificationsToolStripMenuItem1.Click +=
                 new System.EventHandler(this.FireNotificationsToolStripMenuItem1_Click);
             // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
-                {this.aboutToolStripMenuItem1});
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.aboutToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem1
-            // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem1.Text = "About";
-            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.AboutToolStripMenuItem1_Click);
-            // 
             // modeToolStripMenuItem
             // 
             this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
@@ -220,6 +207,28 @@
             this.translateModeToggle.Size = new System.Drawing.Size(152, 22);
             this.translateModeToggle.Text = "Translate";
             this.translateModeToggle.Click += new System.EventHandler(this.translateToggle_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+                {this.aboutToolStripMenuItem1});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.aboutToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem1.Text = "About";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.AboutToolStripMenuItem1_Click);
+            // 
+            // restoreConfigToolStripMenuItem
+            // 
+            this.restoreConfigToolStripMenuItem.Name = "restoreConfigToolStripMenuItem";
+            this.restoreConfigToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.restoreConfigToolStripMenuItem.Text = "Restore Config";
+            this.restoreConfigToolStripMenuItem.Click += new System.EventHandler(this.RestoreConfig_Click);
             // 
             // Form1
             // 
@@ -264,6 +273,7 @@
         private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem countModeToggle;
         private System.Windows.Forms.ToolStripMenuItem translateModeToggle;
+        private System.Windows.Forms.ToolStripMenuItem restoreConfigToolStripMenuItem;
     }
 }
 

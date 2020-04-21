@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClipboardCounter
@@ -12,6 +11,7 @@ namespace ClipboardCounter
 
         private bool fireNotifications = true;
         private bool alwaysOnTop = true;
+        private Settings settings;
 
         public Form1()
         {
@@ -24,7 +24,8 @@ namespace ClipboardCounter
             alwaysOnTopToolStripMenuItem.Checked = alwaysOnTop;
             alwaysOnTopToolStripMenuItem1.Checked = alwaysOnTop;
             this.TopMost = alwaysOnTop;
-            SetMode(Program.Mode);
+            settings = Program.Settings;
+            SetMode(settings.Mode);
         }
 
         private void ShowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,7 +61,11 @@ namespace ClipboardCounter
 
         protected override void WndProc(ref Message m)
         {
-            base.WndProc(ref m);    // Process the message 
+            base.WndProc(ref m);    // Process the message
+            if (settings == null)
+            {
+                return;
+            }
 
             if (m.Msg == ClipboardListener.WM_DRAWCLIPBOARD)
             {
@@ -78,7 +83,7 @@ namespace ClipboardCounter
         {
             clipboardMirror.Text = text;
             string output;
-            switch ( Program.Mode)
+            switch ( settings.Mode)
             {
                 case Mode.Translator:
                 {
@@ -193,13 +198,18 @@ namespace ClipboardCounter
                     break;
                 }       
             }
-            Program.Mode = newMode;
+            settings.Mode = newMode;
         }
         
         private void ResetToggles()
         {
             countModeToggle.Checked = false;
             translateModeToggle.Checked = false;
+        }
+
+        private void RestoreConfig_Click(object sender, EventArgs e)
+        {
+            settings.DumpToFile();
         }
     }
 }

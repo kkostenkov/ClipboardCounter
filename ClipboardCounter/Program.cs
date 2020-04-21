@@ -16,13 +16,19 @@ namespace ClipboardCounter
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+
+            LoadSettings();
             ParseMode(Environment.GetCommandLineArgs());
             
             Application.Run(new Form1());
         }
 
-        public static Mode Mode;
+        public static Settings Settings; 
+
+        private static void LoadSettings()
+        {
+            Settings = Settings.LoadSettings();
+        }
 
         private static void ParseMode(string[] args)
         {
@@ -35,7 +41,7 @@ namespace ClipboardCounter
                 }
                 else if (string.Equals("--translate", arg))
                 {
-                    Mode = Mode.Translator;
+                    Settings.Mode = Mode.Translator;
                 }
             }
         }

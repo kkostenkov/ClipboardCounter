@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Code\ClipboardListener.cs" />
     <Compile Include="Code\Mode.cs" />
+    <Compile Include="Code\Settings\Settings.cs" />
     <Compile Include="Code\TextProcessor.cs" />
     <Compile Include="Code\TextTranslator.cs" />
     <Compile Include="Forms\AboutForm.cs">
