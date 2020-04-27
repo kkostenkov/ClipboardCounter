@@ -71,17 +71,39 @@ namespace ClipboardCounter
             if (m.Msg == ClipboardListener.WM_DRAWCLIPBOARD)
             {
                 IDataObject iData = Clipboard.GetDataObject();      // Clipboard's data
-                if (iData.GetDataPresent(DataFormats.Text))
+                if (iData == null)
                 {
-                    string text = (string)iData.GetData(DataFormats.Text);      // Clipboard text
-                    ProcessText(text);
                     return;
                 }
+                string text = null;
+                try
+                {
+                    // Checks whether the format of the data is 'UnicodeText' or not.
+                    if(iData.GetDataPresent(DataFormats.UnicodeText))
+                    {
+                        text = (string)iData.GetData(DataFormats.UnicodeText);
+                    }
+                    // Checks whether the format of the data is 'Text' or not.
+                    else if (iData.GetDataPresent(DataFormats.Text)) 
+                    {
+                        text = (string)iData.GetData(DataFormats.StringFormat);
+                    }
+                }
+                catch(Exception e)
+                {
+                    Settings.WriteLog("clipboard paring failed: " + e.Message);
+                }
+                ProcessText(text);
             }
         }
 
         private void ProcessText(string text)
         {
+            if (string.IsNullOrEmpty(text))
+            {
+                clipboardMirror.Text = "Failed to parse clipboard";
+                return;
+            }
             clipboardMirror.Text = text;
             string output;
             switch ( settings.Mode)
